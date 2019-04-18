@@ -1,6 +1,5 @@
 package com.leetcode.middle.sort;
 
-import com.leetcode.leetcodeutils.PrintUtils;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -8,6 +7,8 @@ import java.util.Comparator;
 import java.util.List;
 
 /**
+ * 合并区间
+ *
  * @author BaoZhou
  * @date 2019/4/9
  */
@@ -15,10 +16,10 @@ public class Merge {
     @Test
     void test() {
         List<Interval> list = new ArrayList<>();
-        list.add(new Interval(1, 3));
-        list.add(new Interval(2, 6));
-        list.add(new Interval(8, 10));
-        list.add(new Interval(15, 18));
+        list.add(new Interval(1, 4));
+        list.add(new Interval(4, 6));
+        list.add(new Interval(10, 16));
+        list.add(new Interval(10, 20));
         merge(list);
         System.out.println(merge(list).toString());
     }
@@ -26,13 +27,26 @@ public class Merge {
     public List<Interval> merge(List<Interval> intervals) {
         List<Interval> result = new ArrayList<>();
         intervals.sort(Comparator.comparingInt(i -> i.start));
-        int start;
-        for (int i = 0; i < intervals.size()-1; i++) {
-            start = intervals.get(i).start;
-            while (i < intervals.size() - 1 && intervals.get(i).end >= intervals.get(i + 1).start) {
-                i++;
+        for (int i = 0; i < intervals.size(); i++) {
+            if (i == intervals.size() - 1) {
+                result.add(intervals.get(i));
+                break;
             }
-            result.add(new Interval(start, Math.max(intervals.get(i).end,intervals.get(i+1).end)));
+            int end = intervals.get(i).end;
+            int start = intervals.get(i).start;
+            for (int j = i + 1; j < intervals.size(); j++) {
+                if (intervals.get(j).start <= end) {
+                    i++;
+                    end = Math.max(end, intervals.get(j).end);
+                    if(i == intervals.size() - 1){
+                        result.add(new Interval(start, end));
+                        break;
+                    }
+                } else {
+                    result.add(new Interval(start, end));
+                    break;
+                }
+            }
         }
         return result;
     }
