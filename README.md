@@ -16,6 +16,7 @@
 - leetcode 解题集
   - [代码](https://github.com/BzCoder/JavaStudy/tree/master/src/main/java/com/leetcode)
 
+详情查看代码以及DOC目录下的文档。
 我的简书：https://www.jianshu.com/u/36f8ea5220d5
 
 欢迎各位私信留言
