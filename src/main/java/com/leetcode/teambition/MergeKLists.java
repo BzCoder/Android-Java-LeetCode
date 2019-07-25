@@ -4,8 +4,6 @@ import com.leetcode.leetcodeutils.ListNode;
 import com.leetcode.leetcodeutils.NodeWrapper;
 import org.junit.jupiter.api.Test;
 
-import java.util.Stack;
-
 /**
  * 合并K个排序链表
  *
