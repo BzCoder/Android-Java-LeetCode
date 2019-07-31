@@ -22,13 +22,13 @@ public class StrategyTest {
 
     @Test
     void test2() {
-        PromotionActivity activity = new PromotionActivity(PromotionStrategyFactory.getPromtionStategy(PromotionStrategyFactory.Key.CashBack));
+        PromotionActivity activity = new PromotionActivity(PromotionStrategyFactory.getPromotionStrategy(PromotionStrategyFactory.Key.CashBack));
         activity.exec();
 
-        PromotionActivity activity2 = new PromotionActivity(PromotionStrategyFactory.getPromtionStategy("123"));
+        PromotionActivity activity2 = new PromotionActivity(PromotionStrategyFactory.getPromotionStrategy("123"));
         activity2.exec();
 
-        PromotionActivity activity3 = new PromotionActivity(PromotionStrategyFactory.getPromtionStategy(PromotionStrategyFactory.Key.FullReduction));
+        PromotionActivity activity3 = new PromotionActivity(PromotionStrategyFactory.getPromotionStrategy(PromotionStrategyFactory.Key.FullReduction));
         activity3.exec();
     }
 }

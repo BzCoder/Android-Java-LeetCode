@@ -21,7 +21,7 @@ public class PromotionStrategyFactory {
 
     }
 
-    public static PromotionStrategy getPromtionStategy(String key) {
+    public static PromotionStrategy getPromotionStrategy(String key) {
         PromotionStrategy promotionStrategy = strategyMaps.get(key);
         return promotionStrategy == null ? NON_STRATEGY : promotionStrategy;
     }
