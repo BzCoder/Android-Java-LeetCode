@@ -1,4 +1,4 @@
-package com.concurrent.io;
+package com.io;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
