@@ -100,6 +100,7 @@ class Consumer implements Runnable {
         this.clerk = clerk;
     }
 
+    @Override
     public void run() {
         for (int i = 0; i < 30; i++) {
             clerk.sale();
