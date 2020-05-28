@@ -2,27 +2,43 @@ package com.offer;
 
 import org.junit.jupiter.api.Test;
 
-import java.lang.reflect.Array;
+import java.util.Stack;
 
+/**
+ * 旋转数组的最小数字
+ * @author: BaoZhou
+ * @date : 2020/5/28 9:53 上午
+ */
 public class Q6 {
     @Test
     public void result() {
-        for (int i = 0; i < 39; i++) {
-            System.out.println(Fibonacci(i));
-        }
-
+        int[] data1 = {0, 0, 0, 0, 0, 0, 0, 0};
+        int[] data2 = {1, 0, 1, 1, 1};
+        int[] data3 = {3, 4, 5, 1, 2, 3};
+        System.out.println(minNumberInRotateArray(data1));
+        System.out.println(minNumberInRotateArray(data2));
+        System.out.println(minNumberInRotateArray(data3));
     }
 
-    public int Fibonacci(int n) {
-        int a = 0;
-        int b = 1;
-        int temp;
-        while (n > 0) {
-            temp = a + b;
-            a = b;
-            b = temp;
-            n--;
+    public int minNumberInRotateArray(int[] array) {
+        if (array.length == 0) {
+            return 0;
         }
-        return a;
+        int left = 0;
+        int right = array.length - 1;
+        while (left < right) {
+            if (array[left] < array[right]) {
+                return array[left];
+            }
+            int mid = (left + right) / 2;
+            if (array[left] < array[mid]) {
+                left = mid + 1;
+            } else if (array[mid] < array[right]) {
+                right = mid;
+            } else {
+                left++;
+            }
+        }
+        return array[left];
     }
 }

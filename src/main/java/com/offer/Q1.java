@@ -14,7 +14,7 @@ import java.util.List;
  * @date 2020-5-23
  */
 
-public class find1 {
+public class Q1 {
 
     @Test
     public void result() {

@@ -3,35 +3,30 @@ package com.offer;
 import org.junit.jupiter.api.Test;
 
 
+/**
+ * 斐波那契数列
+ * @author: BaoZhou
+ * @date : 2020/5/28 9:55 上午
+ */
 public class Q7 {
     @Test
     public void result() {
-        System.out.println(JumpFloor(1));
-        System.out.println(JumpFloor(2));
-        System.out.println(JumpFloor(3));
-        System.out.println(JumpFloor(4));
+        for (int i = 0; i < 39; i++) {
+            System.out.println(Fibonacci(i));
+        }
 
     }
 
-    public int JumpFloor(int target) {
-        int a1 = 1;
-        int a2 = 2;
-        int result = 0;
-        if (target == 0) {
-            return 0;
+    public int Fibonacci(int n) {
+        int a = 0;
+        int b = 1;
+        int temp;
+        while (n > 0) {
+            temp = a + b;
+            a = b;
+            b = temp;
+            n--;
         }
-        if (target == 1) {
-            return a1;
-        }
-        if (target == 2) {
-            return a2;
-        }
-        for (int i = 0; i < target - 2; i++) {
-            result = a1 + a2;
-            a1 = a2;
-            a2 = result;
-        }
-        return result;
-
+        return a;
     }
 }

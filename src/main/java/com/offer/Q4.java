@@ -1,40 +1,47 @@
 package com.offer;
 
+
+import com.leetcode.leetcodeutils.TreeNode;
+import com.leetcode.leetcodeutils.TreeWrapper;
 import org.junit.jupiter.api.Test;
 
-import java.util.Stack;
+import java.util.Arrays;
 
+/**
+ * 重建二叉树
+ *
+ * @author: BaoZhou
+ * @date : 2020/5/28 9:57 上午
+ */
 public class Q4 {
+
     @Test
     public void result() {
-        push(1);
-        push(2);
-        push(3);
-        push(4);
-        push(5);
-        push(6);
-        System.out.println(pop());
-        System.out.println(pop());
-        System.out.println(pop());
-        System.out.println(pop());
-        System.out.println(pop());
-        System.out.println(pop());
+        int[] pre = {1, 2, 4, 7, 3, 5, 6, 8};
+        int[] in = {4, 7, 2, 1, 5, 3, 8, 6};
+        TreeNode result = reConstructBinaryTree(pre, in);
+        TreeWrapper.prettyPrintTree(result);
     }
 
-    Stack<Integer> stack1 = new Stack<Integer>();
-    Stack<Integer> stack2 = new Stack<Integer>();
 
-
-    public void push(int node) {
-        stack1.push(node);
-    }
-
-    public int pop() {
-        if (stack2.isEmpty()) {
-            while (!stack1.isEmpty()) {
-                stack2.push(stack1.pop());
-            }
+    public TreeNode reConstructBinaryTree(int[] pre, int[] in) {
+        if (pre.length == 0 || in.length == 0) {
+            return null;
         }
-        return stack2.pop();
+        TreeNode result = new TreeNode(pre[0]);
+        for (int i = 0; i < in.length; i++) {
+            if (in[i] == pre[0]) {
+                result.left = reConstructBinaryTree(
+                        Arrays.copyOfRange(pre, 1, i + 1),
+                        Arrays.copyOfRange(in, 0, i));
+
+                result.right = reConstructBinaryTree(
+                        Arrays.copyOfRange(pre, i + 1, pre.length),
+                        Arrays.copyOfRange(in, i + 1, pre.length));
+                break;
+            }
+
+        }
+        return result;
     }
 }
