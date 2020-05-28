@@ -1,6 +1,7 @@
 package com.offer;
 
 
+import com.leetcode.leetcodeutils.ListNode;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
