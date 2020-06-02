@@ -17,7 +17,7 @@ public class Q18 {
 
     @Test
     public void result() {
-        TreeNode head = TreeWrapper.stringToTreeNode("[]");
+        TreeNode head = TreeWrapper.stringToTreeNode("[1,2,3,4,5,6,7,8,9]");
         Mirror(head);
         TreeWrapper.prettyPrintTree(head);
     }
